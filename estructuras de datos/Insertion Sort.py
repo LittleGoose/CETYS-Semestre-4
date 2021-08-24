@@ -40,5 +40,6 @@ while True:
         print ("La lista desordenada: \n" +  str(lista))
         print('Pasos del Insertion Sort para ordenar la lista:')
         insertionSort(lista)
+        break
     else:
         print('El numero de valores debe ser entre 1 y 50, intente nuevamente\n')
