@@ -100,12 +100,12 @@ while True:
     # Si BinarySearch no encuentra el numero, se lo indica
     # al usuario y puede intentar otra vez
     if buscar == "No":
-        print("Ese numero no existe en el arreglo")
+        print("Ese numero no existe en la lista")
 
     # Si encuentra el numero lo imprime junto con su posicion
     # en el arreglo y termina el programa
     else:
-        print(f"el numero {x} se encuentra en la posicion {buscar + 1} del arreglo")
+        print(f"el numero {x} se encuentra en la lista, y existe(n) {buscar} numero(s) antes que el")
         break
 
 # ÚLTIMA MODIFICACIÓN
