@@ -22,7 +22,6 @@ class pila():
     def InsertElement(self, Item):  #Apilar
         if not self.IsFull():
             self.lista.append(Item)
-            #self.lista.push(Item)
             self.top += 1       #+= 1 es lo mismo que self.top + 1
             
     def DeleteElement(self):  #Desapilar (solo el ultimo)
