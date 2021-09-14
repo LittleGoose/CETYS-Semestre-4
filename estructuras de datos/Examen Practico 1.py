@@ -138,10 +138,9 @@ while True:
         # Se crea una lista para imprimir los resultados de Binary Search
         ListaFinal = []
         # Se implementa Binary Search con un for para poder buscar todos los numeros deseados
-        for i in lista2:
+        for i in range(len(lista2)):
             # Convertimos en una variable el lugar de la lista a buscar para poder utilizarla con la funcion BinarySearch
-            BuscaBusca = lista2[i-1]        # AQUI ESTA DANDO EL ERROR INDEX OUT OF RANGE PERO NO ENTIENDO POR QUE SI i-1 DEBERIA FUNCIONAR
-                                            # SOLO FUNCIONA CUANDO HAY 1 NUMERO EN LA LISTA ORIGINAL
+            BuscaBusca = lista2[i-1]       
             
             # Guardamos el resultado de la busqueda en una variable para utilizar en la siguiente parte del codigo
             buscar = BinarySearch(datos, BuscaBusca)
