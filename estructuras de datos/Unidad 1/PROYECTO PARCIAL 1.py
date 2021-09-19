@@ -64,7 +64,7 @@ for i in range(0, stringLength):
     # SI EL CARACTER ES UN (, [ o {, SE AGREGA A LA PILA
     if input_string[i] == "(" or input_string[i] == "[" or input_string[i] == "{":
         stack.Insert(input_string[i])
-        if stack2.IsEmpty():
+        if stack2.IsEmpty() and i == stringLength-1:
             error_index = i
             successFlag = False
 
