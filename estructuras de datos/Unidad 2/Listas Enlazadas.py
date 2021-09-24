@@ -1,6 +1,6 @@
 # Programa para listas enlazadas
 
-# Jorge Axel Cruz Jimenez 31973, Eumir Iram Abbud Orozco 33150
+# Eumir Iram Abbud Orozco 33150, Jorge Axel Cruz Jimenez 31973
 
 # Clase Nodo
 class Node():
