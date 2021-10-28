@@ -1,3 +1,6 @@
+# CODIGO PARA EXAMEN PRACTICO #2
+# EUMIR IRAM ABBUD OROZCO 33150
+
 # Declaramos la clase "Node"
 class Node:
 
@@ -7,7 +10,7 @@ class Node:
         self.right = None
         self.parent = parent
 
-        # Métodos para asignar nodos
+    # Métodos para asignar nodos
     def getLabel(self):
         return self.label
 
@@ -32,7 +35,7 @@ class Node:
     def setParent(self, parent):
         self.parent = parent
 
-
+# CLASE ARBOL
 class BinarySearchTree():
 
     def __init__(self):
@@ -161,116 +164,81 @@ class BinarySearchTree():
             else:
                 node.getParent().setLeft(newChildren)
 
-    # def __str__(self):
-    #     list = self.__InOrderTraversal(self.root)
-    #     str = ""
-    #     for x in list:
-    #         str = str + " " + x.getLabel().__str__()
-    #     return str
+# --- FUNCIONES FUERA DE LAS CLASES
 
-def InPreOrder(curr_node):
-    nodeList = []
-    if curr_node is not None:
-        nodeList = nodeList + InPreOrder(curr_node.getLeft())
-        nodeList.insert(0, curr_node.getLabel())
-        nodeList = nodeList + InPreOrder(curr_node.getRight())
-    return nodeList
-
-def In_Order(self, curr_node):
-        # Crea una lista vacia donde guardar los datos del arbol en el orden deseado
-        nodeList = []
-        
-        # Si el valor con el que se inicia NO es "None" (esta vacio), la funcion corre
-        if curr_node is not None:
-            nodeList.Insert(0, curr_node)
-            nodeList = nodeList + self.In_Order(curr_node.Get_Left())
-            nodeList = nodeList + self.In_Order(curr_node.Get_Right())
-        return nodeList
-
-    # Funcion para ordenar los datos del arbol en "pre orden"           
+# Funcion para ordenar los datos del arbol en "pre orden"           
 def Pre_Order(curr_node):
     # Crea una lista vacia donde guardar los datos del arbol en el orden deseado
     nodeList = []
     
     # Si el valor con el que se inicia NO es "None" (esta vacio), la funcion corre
     if curr_node is not None:
+        # Consigue el nodo izquierdo
         nodeList = nodeList + Pre_Order(curr_node.getLeft())
+        # Inserta el nodo actual a la lista
         nodeList.insert(0, curr_node.getLabel())
+        # Consigue el nodo derecho
         nodeList = nodeList + Pre_Order(curr_node.getRight())
+    # Regresa la lista completa
     return nodeList
 
-# Funcion para ordenar los datos del arbol en "post orden"
-def Post_Order(curr_node):
-    # Crea una lista vacia donde guardar los datos del arbol en el orden deseado
-    nodeList = []
+# Funcion para imprimir visualmente el arbol binario 
+def PrintBST(root, space) :
+ 
+    # Si la raiz esta vacia la funcion se detiene
+    if (root == None) :
+        return
+ 
+    # variable usada para incrementar el espacio entre los niveles de los nodos
+    space += COUNT[0]
+ 
+    # Se encuentra el hijo derecho
+    PrintBST(root.right, space)
+ 
+    # Se imprime el nodo actual despues del espacio utilizando la lista "COUNT"
+    print()
+    for i in range(COUNT[0], space):
+        print(end = "-")
+    print(root.label)
+ 
+    # Se encuentra el hijo izquierdo
+    PrintBST(root.left, space)
+
+# Funcion para encontrar la altura del arbol binario
+def height(root):
+ 
+    # Si el arbol esta vacio regresa el valor de 0
+    if root is None:
+        return 0
     
-    # Si el valor con el que se inicia NO es "None" (esta vacio), la funcion corre
-    if curr_node is not None:
-        nodeList = nodeList + Post_Order(curr_node.getRight())
-        nodeList = nodeList + Post_Order(curr_node.getLeft())
-        nodeList.insert(0, curr_node.getLabel())
-    return nodeList
+    # Guarda la altura de cada nodo izquierdo y derecho
+    leftAns = height(root.left)
+    rightAns = height(root.right)
+ 
+    # Compara las 2 variables y regresa la que sea mayor sumandole 1 porque las listas en python empiezan en 0
+    return max(leftAns, rightAns) + 1
 
+#  --- CODIGO PARA CORRER EL PROGRAMA ---
 
-'''
-Ejemplo
-                8
-                / 
-            3   10
-            /     
-            1   6    14
-                /    /
-            4   7 13 
-'''
+'''INSTRUCCION 1'''
+Recorrido_Manual = [67, 44, 22, 9, 37, 39, 50, 47, 85, 73, 90, 88, 94]
+print(f"Recorrido manual de preorden: {Recorrido_Manual}")
 
-'''
-Ejemplo luego del borrado
-                7
-                / 
-            1   4
-
-'''
-# Instancia del árbol binario de búsqueda
+'''INSTRUCCION 2'''
 t = BinarySearchTree()
-#Insertamos los elementos
-t.insert(8)
-t.insert(3)
-t.insert(6)
-t.insert(1)
-t.insert(10)
-t.insert(14)
-t.insert(13)
-t.insert(4)
-t.insert(7)
+for num in Recorrido_Manual:
+    t.insert(num)
+COUNT =[10]
+print(f"Recorrido por codigo de preorden: {Pre_Order(t.root)}")
+PrintBST(t.root, 0)
 
-print(str(t))
+'''INSTRUCCION 3'''
+print(f'Altura del arbol: {height(t.root)}')
 
-if(t.getNode(6) is not None):
-    print("El elemento 6 existe")
-else:
-    print("El elemento 6 no existe")
+'''INSTRUCCION 4'''
+print(f"Valor Max: {t.getMax().getLabel()}")
+print(f"Valor Min: {t.getMin().getLabel()}")
 
-if(t.getNode(-1) is not None):
-    print("El elemento -1 existe")
-else:
-    print("El elemento -1 no existe")
-
-if(not t.empty()):
-    print("Valor Max: " + str(t.getMax().getLabel()))
-    print("Valor Min: " + str(t.getMin().getLabel()))
-
-# t.delete(13)
-# t.delete(10)
-# t.delete(8)
-# t.delete(3)
-# t.delete(6)
-# t.delete(14)
-
-# Obtenemos todos los elementos del árbol en preorden
-# list = t.traversalTree(InPreOrder, t.root)
-# for x in list:
-#     print(list)
-
-print(str(InPreOrder(t.root)))
-print(str(Pre_Order(t.root)))
-print(str(Post_Order(t.root)))
+'''INSTRUCCION 5'''
+'''INSTRUCCION 6'''
+'''INSTRUCCION 7'''
