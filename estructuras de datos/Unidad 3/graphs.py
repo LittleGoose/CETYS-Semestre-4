@@ -22,12 +22,11 @@ class Vertice():  # Clase que nos va a permitir ir creando nuestro vertices.
 
 
 class Grafo():
-    vertices = {}  # Diccionario
+    vertices = {} # lista de vertices
     tiempo = 0
 
     def agregarVertice(self, vertice):  # Método para agregar los vertices.
-        if isinstance(vertice,
-                      Vertice) and vertice.nombre not in self.vertices:  # Método (isinstance) nos regresa verdadero o falso para verificar si el vertice es un objeto que ya tenemos
+        if isinstance(vertice, Vertice) and vertice.nombre not in self.vertices:  # Método (isinstance) nos regresa verdadero o falso para verificar si el vertice es un objeto que ya tenemos
             # en Vertice, verifica si dentro de vertice.nombre existe o no, de no existir, entra e inserta.
             self.vertices[vertice.nombre] = vertice  # Inserta un nuevo vertice
             return True  # Regresa True
